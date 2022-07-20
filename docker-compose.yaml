@@ -1,0 +1,23 @@
+---
+version: '3'
+services:
+  gohealth:
+    build: .
+    links:
+      - db:db
+    depends_on:
+      - db
+    ports:
+      - 3009:3009
+    restart: unless-stopped
+    volumes:
+      - logs:/app/logs
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-CU16-ubuntu-20.04
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      - SA_PASSWORD=Go@Health1
+      - ACCEPT_EULA=Y
