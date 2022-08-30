@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
     const Users = sequelize.define('Logs', {
         event: DataTypes.ENUM(
-            'User Login', 'User Logout', 'New User', 'User Deleted',
-            'New Course', 'Couse Rate Up', 'Couse Rate Down', 'Course Completed'
-            'New Viewer', 'Viewer Contacted'
-            ),
+            'User Login', 'User Logout', 'New User', 'User Deleted', 'User Error',
+            'New Course', 'Couse Rate Up', 'Couse Rate Down', 'Course Completed', 'Course Error',
+            'New Viewer', 'Viewer Contacted', 'Viewer Error',
+        ),
         userId: DataTypes.INTEGGER,
         courseId: DataTypes.INTEGGER,
         viewerId: DataTypes.INTEGGER,

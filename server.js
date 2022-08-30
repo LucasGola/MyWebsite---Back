@@ -2,8 +2,8 @@ import 'express-async-errors';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import moment from 'moment';
-import swaggerUI from 'swagger-ui-express';
-import swaggerDoc from './swagger.json';
+// import swaggerUI from 'swagger-ui-express';
+// import swaggerDoc from './swagger.json';
 import helmet from 'helmet';
 
 require('dotenv').config();
@@ -18,7 +18,7 @@ app.use(cors({
   methods: 'POST, GET, DELETE, PATCH',
   origin: true,
 }));
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
+// app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
 app.use(helmet());
 
 app.get('/', (req, res) => {
