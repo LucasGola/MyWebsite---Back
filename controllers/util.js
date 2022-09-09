@@ -1,3 +1,5 @@
+import models from '../db/models'
+
 export const sendError = (res, err, status, message) => {
     logToFile(err);
     res.status(status || 500).json({
@@ -21,3 +23,11 @@ export const sendSuccess = (res, data, status, numberOfRows, message) => {
         numberOfRows: numberOfRows || qty,
     });
 };
+
+export const errorLog = (module, error, productId) => {
+    models.errosLogs.create({
+        module,
+        error,
+        productId
+    })
+}
