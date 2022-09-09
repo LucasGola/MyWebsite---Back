@@ -8,7 +8,9 @@
   "private": true,
   "scripts": {
     "start": "nodemon server.js",
-    "dev": "nodemon run dev"
+    "set:vars": "(for /F \"tokens=*\" %i in (.env) do set %i)",
+    "db:create": "(for /F \"tokens=*\" %i in (.env) do set %i) && npx sequelize db:create",
+    "db:migrate": "(for /F \"tokens=*\" %i in (.env) do set %i) && npx sequelze db:migrate"
   },
   "dependencies": {
     "dotenv": "^16.0.2",
