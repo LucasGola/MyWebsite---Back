@@ -3,6 +3,6 @@ import Courses from '../controllers/Courses/index.js';
 
 const router = Router();
 
-router.use('/create', Courses.create);
+router.post('/create', Courses.create);
 
 export default router;

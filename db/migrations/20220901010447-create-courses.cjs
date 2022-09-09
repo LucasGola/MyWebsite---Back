@@ -20,17 +20,14 @@ module.exports = {
       },
       completed: {
         allowNull: false,
-        default: 0,
         type: Sequelize.BOOLEAN,
       },
       rateUp: {
         allowNull: false,
-        default: 0,
         type: Sequelize.INTEGER
       },
       rateDown: {
         allowNull: false,
-        default: 0,
         type: Sequelize.INTEGER
       },
       createdAt: {

@@ -1,7 +1,12 @@
-import models from '../db/models/index.js'
+// These lines makes "require" available
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
+import { DataTypes } from 'sequelize';
+import db from '../db/models/index.js';
+const ErrorsLogs = require('../db/models/errorslogs.cjs')(db.sequelize, DataTypes);
 
 export const sendError = (res, err, status, message) => {
-    logToFile(err);
     res.status(status || 500).json({
         status: message,
         err: err.message ? err.message : err.error,
@@ -24,10 +29,10 @@ export const sendSuccess = (res, data, status, numberOfRows, message) => {
     });
 };
 
-export const errorLog = (module, error, productId) => {
-    models.errosLogs.create({
+export const errorLog = async (module, error, productId) => {
+    await new ErrorsLogs({
         module,
         error,
         productId
-    })
-}
+    }).save();
+};
