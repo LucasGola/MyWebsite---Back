@@ -1,4 +1,4 @@
-import { create } from './createCourse';
+import { create } from './createCourse.js';
 
 export default {
     create,

@@ -1,4 +1,4 @@
-import models from '../db/models'
+import models from '../db/models/index.js'
 
 export const sendError = (res, err, status, message) => {
     logToFile(err);

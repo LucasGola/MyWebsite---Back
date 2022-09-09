@@ -1,19 +1,22 @@
 'use strict';
+// These lines makes "require" available
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url)
 
 const fs = require('fs');
 const path = require('path');
+import { fileURLToPath } from 'url';
 const Sequelize = require('sequelize');
+const __filename = fileURLToPath(import.meta.url)
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const __dirname = path.dirname(__filename);
+import configs from '../config/config.js'
+const config = configs[env]
 const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+const  sequelize = new Sequelize(config.database, config.username, config.password, config);
+
 
 fs
   .readdirSync(__dirname)
@@ -34,4 +37,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+export default db;

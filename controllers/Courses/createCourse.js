@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
-import models from '../../db/models';
-import { sendError, sendSuccess, errorLog } from '../util';
-import { createLog } from './createLogs';
+import models from '../../db/models/index.js';
+import { sendError, sendSuccess, errorLog } from '../util.js';
+import { createLog } from './createLogs.js';
 
 export const create = async (req, res) => {
     const { name, platform, link, userId } = req.body;

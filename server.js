@@ -1,5 +1,9 @@
+// These lines makes "require" available
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url)
+
 require('dotenv').config();
-import routes from './routes';
+import routes from './routes/index.js';
 
 const express = require('express');
 const app = express();

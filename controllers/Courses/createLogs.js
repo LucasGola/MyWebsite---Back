@@ -1,6 +1,5 @@
-import { Sequelize } from "../../db/models";
-import models from '../../db/models'
-import { sendError, SendSuccess, errorLog } from "../util";
+import models from '../../db/models/index.js'
+import { errorLog } from "../util.js";
 
 export const createLog = async (status, courseId, userId) => {
   const log = await models.coursesLogs.create({

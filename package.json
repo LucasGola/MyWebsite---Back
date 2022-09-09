@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "my-website",
   "version": "1.0.0",
   "description": "My personal website",
