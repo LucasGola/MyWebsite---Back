@@ -17,6 +17,9 @@ module.exports = {
       link: {
         type: Sequelize.STRING,
       },
+      duration: {
+        type: Sequelize.INTEGER
+      },
       completed: {
         allowNull: false,
         type: Sequelize.BOOLEAN,

@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     platform: DataTypes.STRING,
     link: DataTypes.STRING,
+    duration: DataTypes.INTEGER,
     completed: { type: DataTypes.BOOLEAN, defaultValue: 0 },
     rateUp: { type: DataTypes.INTEGER, defaultValue: 0 },
     rateDown: { type: DataTypes.INTEGER, defaultValue: 0 },

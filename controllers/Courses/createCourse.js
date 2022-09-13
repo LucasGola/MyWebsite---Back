@@ -14,7 +14,7 @@ export const create = async (req, res) => {
             transaction,
         }).then((data) => {
             const { id } = data;
-            createLog('New Course', id, userId);
+            createLog('New Course', id, userId); // TODO: ad userId
             return sendSuccess(res, data);
         }).catch((err) => {
             errorLog(
