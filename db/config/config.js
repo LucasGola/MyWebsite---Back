@@ -1,10 +1,6 @@
-// These lines makes "require" available
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url)
-
 require('dotenv').config();
 
-export default {
+module.exports = {
   development: {
     username: process.env.USER,
     password: process.env.PASSWORD,

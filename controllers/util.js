@@ -1,10 +1,4 @@
-// These lines makes "require" available
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-
-import { DataTypes } from 'sequelize';
-import db from '../db/models/index.js';
-const ErrorsLogs = require('../db/models/errorslogs.cjs')(db.sequelize, DataTypes);
+import models from '../db/models';
 
 export const sendError = (res, err, status, message) => {
     res.status(status || 500).json({
@@ -29,10 +23,13 @@ export const sendSuccess = (res, data, status, numberOfRows, message) => {
     });
 };
 
-export const errorLog = async (module, error, productId) => {
-    await new ErrorsLogs({
-        module,
-        error,
-        productId
-    }).save();
+export const errorLog = async (module, error) => {
+    try {
+        await models.errorsLogs.create({
+            module,
+            error: error.message
+        });
+    } catch (err) {
+        console.log(err)
+    }
 };

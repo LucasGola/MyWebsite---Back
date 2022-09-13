@@ -1,5 +1,8 @@
-import { create } from './createCourse.js';
+import { create } from './createCourse';
+import { getCourseById, getAll } from './getters'
 
 export default {
     create,
+    getCourseById,
+    getAll
 };

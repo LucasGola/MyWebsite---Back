@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import Courses from './Courses.js';
+import Courses from './Courses';
 
 const router = Router();
 

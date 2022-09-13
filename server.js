@@ -1,14 +1,10 @@
-// These lines makes "require" available
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-
-import bodyParser from 'body-parser';
+  import bodyParser from 'body-parser';
 import cors from 'cors';
 import 'express-async-errors';
 import moment from 'moment';
+import routes from './routes/index';
 require('dotenv').config();
-require('log-timestamp')(() => `[${moment().utcOffset('-03:00').format('YYYY-MM-DD HH:mm:ss A')}]`);
-import routes from './routes/index.js';
+require('log-timestamp')(() => `[${moment().utcOffset('-03:00').format('YYYY-MM-DD HH:mm:ss')}]`);
 
 const express = require('express');
 const app = express();

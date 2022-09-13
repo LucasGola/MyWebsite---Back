@@ -1,16 +1,17 @@
 {
-  "type": "module",
   "name": "my-website",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "My personal website",
   "main": "server.js",
+
+  "module": "main.js",
   "author": "Lucas Gola da Silva",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon -r esm server.js",
     "set:vars": "(for /F \"tokens=*\" %i in (.env) do set %i)",
-    "db:create": "(for /F \"tokens=*\" %i in (.env) do set %i) && npx sequelize db:create",
+    "db:create": "npx sequelize db:create",
     "db:migrate": "npx sequelize-cli db:migrate"
   },
   "dependencies": {
@@ -21,11 +22,13 @@
     "express-async-errors": "^3.1.1",
     "moment": "^2.29.4",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.21.4"
+    "sequelize": "^5.11.0"
   },
   "devDependencies": {
+    "esm": "^3.2.25",
     "log-timestamp": "^0.3.0",
     "nodemon": "^2.0.19",
     "sequelize-cli": "^6.4.1"
-  }
+  },
+  "repository": "git@github.com:LucasGola/my-website.git"
 }
