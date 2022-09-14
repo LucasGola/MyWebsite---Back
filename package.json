@@ -1,6 +1,6 @@
 {
   "name": "my-website",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "My personal website",
   "main": "server.js",
   "module": "main.js",
