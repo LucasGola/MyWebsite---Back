@@ -27,7 +27,7 @@ module.exports = {
       message: {
         type: Sequelize.STRING
       },
-      answeredAt: {
+      repliedAt: {
         type: Sequelize.DATE,
       },
       createdAt: {

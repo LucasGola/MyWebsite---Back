@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     linkedin: DataTypes.STRING,
     message: DataTypes.STRING,
-    answeredAt: DataTypes.DATE,
+    repliedAt: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'Viewers',
