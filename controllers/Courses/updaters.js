@@ -25,6 +25,7 @@ export const updateCourseInfos = (req, res) => {
         }
       );
     });
+    createLog('Course Infos Updated', id); // TODO: ad userId
     return sendSuccess(res);
   } catch (err) {
     errorLog('Update Course Infos', err);
@@ -46,6 +47,7 @@ export const updateCourseStatus = (req, res) => {
         where: { id }
       });
     });
+    createLog('Course Status Updated', id); // TODO: ad userId
     return sendSuccess(res);
   } catch (err) {
     errorLog('Change Cour Status', err);
