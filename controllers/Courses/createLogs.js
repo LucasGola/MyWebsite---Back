@@ -11,7 +11,7 @@ export const createLog = async (status, courseId, userId) => {
   }).catch((logError) => {
     errorLog(
       'Create Course Log',
-      logError.stack ? logError.stack : logError.error
+      logError.error
     );
     return logError;
   });

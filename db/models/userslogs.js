@@ -11,10 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Users, { foreignKey: 'userId', targetKey: 'id' });
+      this.belongsTo(models.Users, { foreignKey: 'newUserId', targetKey: 'id' });
     }
   }
   UsersLogs.init({
     status: DataTypes.ENUM('User Login', 'User Logout', 'User Created', 'User Deleted'),
+    newUserId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER
   }, {
     sequelize,
