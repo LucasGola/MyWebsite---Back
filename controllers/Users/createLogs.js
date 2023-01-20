@@ -4,8 +4,8 @@ import { errorLog } from "../util";
 export const createLog = async (status, newUserId, userId) => {
   const log = await models.UsersLogs.create({
     status,
-    newUserId,
     userId,
+    adminId,
   }).then((data) => {
     if (data.status = 'ok') return data;
   }).catch((logError) => {

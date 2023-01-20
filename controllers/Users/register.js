@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 import JWT from 'jsonwebtoken';
 
 export const register = async (req, res) => {
-  const { name, username, password, email } = req.body;
+  const { name, username, password, email, permission } = req.body;
   const { ip } = req;
 
   try {
@@ -25,6 +25,7 @@ export const register = async (req, res) => {
         username,
         email: email.toLowerCase(),
         password: encryptedPassword,
+        permission,
       }, { transaction });
       
       if (!user) throw new Error('Não foi possível criar o usuário.');
