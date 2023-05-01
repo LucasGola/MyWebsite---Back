@@ -8,7 +8,7 @@ export const sendError = (res, err, status, message) => {
     });
 };
 
-export const sendSuccess = (res, data, status, numberOfRows) => {
+export const sendSuccess = (res, data, status) => {
     let qty = 0;
     if (data && data.length) {
         qty = data.length;
@@ -17,7 +17,6 @@ export const sendSuccess = (res, data, status, numberOfRows) => {
         status: 'ok',
         data,
         timestamp: new Date(),
-        numberOfRows: numberOfRows || qty,
     });
 };
 
