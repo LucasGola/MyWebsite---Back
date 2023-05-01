@@ -2,7 +2,7 @@ import models from '../../db/models';
 import { errorLog } from "../util";
 
 export const createLog = async (status, courseId, userId) => {
-  const log = await models.CoursesLogs.create({
+  await models.CoursesLogs.create({
     status,
     courseId,
     userId,

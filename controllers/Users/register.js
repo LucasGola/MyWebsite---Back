@@ -2,10 +2,10 @@ import models from '../../db/models';
 import { errorLog, sendError, sendSuccess } from '../util';
 import _ from 'lodash';
 import bcrypt from 'bcryptjs';
-import JWT from 'jsonwebtoken';
+import { createLog } from './createLogs';
 
 export const register = async (req, res) => {
-  const { name, username, password, email, permission } = req.body;
+  const { name, username, password, confirmPassword, email, permission } = req.body;
   const { ip } = req;
 
   try {
@@ -13,10 +13,14 @@ export const register = async (req, res) => {
       throw new Error('Todos os campos devem ser preenchidos!');
     };
 
+    if (password != confirmPassword) {
+      throw new Error('As senhas não correspondem!');
+    }
+
     await models.sequelize.transaction(async (transaction) => {
       const oldUser = await models.Users.findOne({ where: { email } });
 
-      if (oldUser) throw new Error('Usuário já existe!');
+      if (oldUser) throw new Error('Usuário já existente, altere o e-mail ou recupere a senha.');
 
       const encryptedPassword = await bcrypt.hash(password, 10);
 
@@ -27,13 +31,14 @@ export const register = async (req, res) => {
         password: encryptedPassword,
         permission,
       }, { transaction });
-      
-      if (!user) throw new Error('Não foi possível criar o usuário.');
 
-      return sendSuccess(res, user);
+      if (!user) throw new Error('Não foi possível criar o usuário. Tente novamente em alguns minutos.');
+
+      createLog('User Created', user.id);
+      return sendSuccess(res, { user }, 201);
     });
   } catch (err) {
     errorLog('Register User', err);
-    return sendError(res, err);
+    return sendError(res, err, 409);
   }
 };

@@ -8,12 +8,10 @@ export const sendError = (res, err, status, message) => {
     });
 };
 
-export const sendSuccess = (res, data, status, numberOfRows, message) => {
+export const sendSuccess = (res, data, status, numberOfRows) => {
     let qty = 0;
     if (data && data.length) {
         qty = data.length;
-        // eslint-disable-next-line no-param-reassign
-        if (!status) status = 200;
     }
     res.status(status || 200).json({
         status: 'ok',
@@ -27,9 +25,9 @@ export const errorLog = async (module, error) => {
     try {
         await models.errorsLogs.create({
             module,
-            error: error.message
+            error: error.message ? error.message : error.error,
         });
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 };

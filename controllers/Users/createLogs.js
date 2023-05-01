@@ -1,11 +1,10 @@
 import models from '../../db/models';
 import { errorLog } from "../util";
 
-export const createLog = async (status, newUserId, userId) => {
-  const log = await models.UsersLogs.create({
+export const createLog = async (status, userId) => {
+  await models.UsersLogs.create({
     status,
     userId,
-    adminId,
   }).then((data) => {
     if (data.status = 'ok') return data;
   }).catch((logError) => {

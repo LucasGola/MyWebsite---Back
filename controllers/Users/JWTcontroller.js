@@ -1,4 +1,3 @@
 import JWT from 'jsonwebtoken';
-import models from '../../models';
 
-const createJWT = (dataToSign) => JWT.sign(dataToSign, process.env.SECRET);
+export const createJWT = (dataToSign) => JWT.sign(dataToSign, process.env.JWT_SECRET, { expiresIn: '1h' });
