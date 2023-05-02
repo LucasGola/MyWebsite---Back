@@ -3,12 +3,16 @@ import { errorLog, sendError, sendSuccess } from '../util';
 import _ from 'lodash';
 import bcrypt from 'bcryptjs';
 import { createLog } from './createLogs';
+import { verifyToken } from './JWTcontroller';
 
 export const register = async (req, res) => {
   const { name, username, password, confirmPassword, email, permission } = req.body;
-  const { ip } = req;
-
+  
   try {
+    const token = req.headers['authorization'] || null;
+    const verified = verifyToken(token)
+    if (!verified) throw new Error('Usuário não autenticado!');
+
     if (_.isNil(name) || _.isNil(username) || _.isNil(password) || _.isNil(email)) {
       throw new Error('Todos os campos devem ser preenchidos!');
     };
